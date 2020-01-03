@@ -1,7 +1,7 @@
 $(function() {
-  // var json_base_url = "./assets/json";
-  var json_base_url =
-    "https://raw.githubusercontent.com/ka-nineteen-developer/jacts_json_generator/master/website/assets/json";
+  var json_base_url = "./assets/json";
+  // var json_base_url =
+  //   "https://raw.githubusercontent.com/ka-nineteen-developer/jacts_json_generator/master/website/assets/json";
   var factArray = [];
   var currentYear = new Date().getFullYear();
 
