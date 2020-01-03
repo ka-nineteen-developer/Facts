@@ -1,0 +1,18 @@
+p {
+    margin: 0;
+}
+#publishedList, #unPublishedList {
+    min-height: 200px;
+    border: 1px solid gray;
+}
+
+#publishedList li, #unPublishedList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+#publishedList li .glyphicon, #unPublishedList li .glyphicon {
+    padding: 10px;
+}
