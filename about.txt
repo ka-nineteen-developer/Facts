@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>WhatTheFacts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+      $(function() {
+        var currentYear = new Date().getFullYear();
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Set header title width
+        let headerW = $(".banner_header").width();
+        $(".banner_subheader").css("width", headerW);
+        $(".banner_subheader").css("text-align", "right");
+
+        // On resize set header title width
+        $(window).resize(function() {
+          console.log("resize");
+          headerW = $(".banner_header").width();
+          $(".banner_subheader").css("text-align", "right");
+          $(".banner_subheader").css("width", headerW);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="jumbotron text-center">
+      <a href="./index.html">
+        <h1 class="banner_header">WhatTheFacts</h1>
+        <p class="banner_subheader">Facts everyday</p>
+      </a>
+    </div>
+
+    <div class="container-fluid">
+      <div class="a_container">
+        <br />
+        <h1 class="about-title">About us</h1>
+        <br />
+        <br />
+        <h4>
+          What is WhatTheFacts.com?
+          <br />
+          <br />
+          WhatTheFacts.com is a collection of Material Design, Popular Colors,
+          Flat UI Colors, Metro Colors, Social Colors and many more. This tool
+          makes it easy to create, adjust, and experiment with custom colors for
+          the web.
+        </h4>
+        <br />
+        <h1 class="about-title">Buy me a Beer</h1>
+      </div>
+    </div>
+    <a
+      href="./index.html"
+      class="sponsor_btn"
+      data-toggle="tooltip"
+      title="Back to Home"
+      data-placement="left"
+      ><image alt="facts" src="./assets/images/home_icon.png" />
+    </a>
+  </body>
+</html>

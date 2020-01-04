@@ -1,9 +1,10 @@
 $(function() {
-  // var json_base_url = "./assets/json";
-  var json_base_url =
-    "https://raw.githubusercontent.com/ka-nineteen-developer/jacts_json_generator/master/website/assets/json";
+  var json_base_url = "./assets/json";
+  // var json_base_url =
+  //   "https://raw.githubusercontent.com/ka-nineteen-developer/facts/master/assets/json";
   var factArray = [];
   var currentYear = new Date().getFullYear();
+  $('[data-toggle="tooltip"]').tooltip();
 
   //   Add all list of JSON files
   var list_of_files = [2019, 2020, 2021, 2022];
@@ -13,7 +14,9 @@ $(function() {
   apiCall();
 
   function apiCall() {
-    $.each(list_of_files, function(index, file) {
+    // $.each(list_of_files, function(index, file) {
+    list_of_files.map((file, index) => {
+      // })
       if (file <= currentYear) {
         console.log(file);
         $.getJSON(json_base_url + "/" + file + ".json")
@@ -41,7 +44,7 @@ $(function() {
             }
           })
           .catch(function(err) {
-            console.error(err.statusText);
+            console.error(err);
             generatePagination();
           });
       }
@@ -59,35 +62,38 @@ $(function() {
     });
   }
 
+  // Dynamic fact list
   function appendList(data) {
     $("#fact_list_w").empty();
     data.map(fact => {
       $("#fact_list_w").append(
         `
-              <li class="border_shadow pt-20 pr-20 pb-20 pl-20 mb-10">
+              <li class="border_shadow pt-20 pr-20 pb-10 pl-20 mb-10">
                   <h3 class="mb-10">#` +
           fact.id +
           `</h3>
                   <h4>` +
           fact.facts +
           `</h4>
+          <h6 class="text-right mt-10 text-uppercase"><strong>- ` +
+          moment(fact.publish_date, "DD-MM-YYYY").format("DD MMMM YYYY") +
+          `</strong>
               </li>
             `
       );
     });
-    // $.each(data, function(index, fact) {
-    //   $("#fact_list_w").append(
-    //     `
-    //         <li class="border_shadow pt-20 pr-20 pb-20 pl-20 mb-10">
-    //             <h3 class="mb-10">#` +
-    //       fact.id +
-    //       `</h3>
-    //             <h4>` +
-    //       fact.facts +
-    //       `</h4>
-    //         </li>
-    //       `
-    //   );
-    // });
+
+    // Set header title width
+    let headerW = $(".banner_header").width();
+    $(".banner_subheader").css("width", headerW);
+    $(".banner_subheader").css("text-align", "right");
+
+    // On resize set header title width
+    $(window).resize(function() {
+      console.log("resize");
+      headerW = $(".banner_header").width();
+      $(".banner_subheader").css("text-align", "right");
+      $(".banner_subheader").css("width", headerW);
+    });
   }
 });
