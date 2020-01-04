@@ -1,6 +1,6 @@
 $(function() {
-  // var json_base_url = "./assets/json";
-  var json_base_url =
+  var json_base_url = "./assets/json";
+  // var json_base_url =
     "https://raw.githubusercontent.com/ka-nineteen-developer/facts/master/assets/json";
   var factArray = [];
   var currentYear = new Date().getFullYear();
