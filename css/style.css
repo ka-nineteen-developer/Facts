@@ -32,7 +32,8 @@ p {
   color: grey;
 }
 a,
-a:hover {
+a:hover,
+a:focus {
   text-decoration: inherit;
   color: inherit;
 }

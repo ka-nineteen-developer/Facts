@@ -1,7 +1,7 @@
 $(function() {
   var json_base_url = "./assets/json";
   // var json_base_url =
-  //   "https://raw.githubusercontent.com/ka-nineteen-developer/facts/master/assets/json";
+    //"https://raw.githubusercontent.com/ka-nineteen-developer/facts/master/assets/json";
   var factArray = [];
   var currentYear = new Date().getFullYear();
   $('[data-toggle="tooltip"]').tooltip();
@@ -18,7 +18,6 @@ $(function() {
     list_of_files.map((file, index) => {
       // })
       if (file <= currentYear) {
-        console.log(file);
         $.getJSON(json_base_url + "/" + file + ".json")
           .then(function(data) {
             if (data) {
@@ -35,8 +34,6 @@ $(function() {
               factArray = [...factArray, ...filterd_data.reverse()];
               if (index + 1 == list_of_files.length) {
                 generatePagination();
-                console.log("End of loop, call a function");
-                console.log(factArray);
               }
             } else {
               generatePagination();
@@ -90,10 +87,33 @@ $(function() {
 
     // On resize set header title width
     $(window).resize(function() {
-      console.log("resize");
       headerW = $(".banner_header").width();
       $(".banner_subheader").css("text-align", "right");
       $(".banner_subheader").css("width", headerW);
     });
+
+    // On click of pagination scroll to top
+    $(".paginationjs-page").on("click", function() {
+      let scrollToId = "#fact_list_w";
+      scrollToTop(scrollToId);
+    });
+    $(".paginationjs-prev").on("click", function() {
+      let scrollToId = "#fact_list_w";
+      scrollToTop(scrollToId);
+    });
+    $(".paginationjs-next").on("click", function() {
+      let scrollToId = "#fact_list_w";
+      scrollToTop(scrollToId);
+    });
+
+    // Scroll to top
+    function scrollToTop(scrollToId) {
+      $("html, body").animate(
+        {
+          scrollTop: $(scrollToId).offset().top
+        },
+        1000
+      );
+    }
   }
 });
